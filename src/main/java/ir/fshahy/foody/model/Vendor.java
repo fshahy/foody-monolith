@@ -9,13 +9,19 @@ import javax.persistence.OneToOne;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
-import com.sun.istack.NotNull;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
 @Entity
-//@Table(name = "vendors")
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+@JsonIgnoreProperties({"menu", "hibernateLazyInitializer"})
 public class Vendor {
 	@Id
 	@GeneratedValue
@@ -27,12 +33,11 @@ public class Vendor {
 	
 	protected String email;
 	
-	@NotNull
 	@ManyToOne(fetch = FetchType.LAZY)
 	protected City city;
 	
 	protected Address address;
 	
-	@OneToOne(mappedBy = "vendor")
+	@OneToOne(mappedBy = "vendor", fetch = FetchType.LAZY)
 	protected Menu menu;
 }

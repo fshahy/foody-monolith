@@ -11,10 +11,13 @@ import javax.persistence.OneToMany;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import lombok.Data;
 
 @Data
 @Entity
+@JsonIgnoreProperties("products")
 public class ProductCategory {
 	@Id
 	@GeneratedValue

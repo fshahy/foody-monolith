@@ -1,11 +1,16 @@
 package ir.fshahy.foody.model;
 
+import javax.persistence.Column;
 import javax.persistence.Embeddable;
-import javax.validation.constraints.NotBlank;
 
+import lombok.Data;
+
+@Data
 @Embeddable
 public class Address {
-	@NotBlank
+	@Column(nullable = false)
 	protected String line1;
+	
+	@Column
 	protected String line2;
 }
